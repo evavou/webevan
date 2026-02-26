@@ -1,0 +1,182 @@
+/* CSS de ContactPanel.jsx */
+
+/* --- MAIN --- */
+.contact-modal {
+  width: 90%;
+  max-width: 900px;
+}
+
+.contact-inner {
+  padding: 30px;
+  position: relative;
+}
+
+.contact-split {
+  display: flex;
+  gap: 30px;
+}
+
+.contact-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 5px;
+}
+
+.contact-separator {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* --- CLOSE BUTTON --- */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ffffff99;
+  font-size: 1.2rem; cursor: pointer;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+
+/* --- TEXTES --- */
+.contact-title-primary {
+  text-align: center;
+  color: var(--theme-2);
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.contact-title-secondary {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+  color: var(--theme-1);
+}
+
+
+
+/* --- LEFT SIDE -> SOCIALS --- */
+.main-box {
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.social-box {
+  text-decoration: none;
+  transition: 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.social-box:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.social-username {
+  color: #ffffff99;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+
+
+/* --- RGHT SIDE -> MAIL --- */
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.contact-mail {
+  margin-top: -15px;
+  color: #ffffff56;
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.mail-text-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mail-text-input:focus {
+  outline: none;
+  border-color: var(--theme-2);
+}
+
+.vertical-resize {
+  resize:vertical;
+  max-height: 350px;
+}
+
+
+/* --- GESTION DES ERREURS --- */
+.mail-text-input.input-error {
+  border-color: #ff000079;
+}
+
+.mail-text-input.input-error::placeholder {
+  color: #ff4747;
+  opacity: 0.8;
+}
+
+
+/* --- MOBILE --- */
+@media (max-width: 768px) { 
+
+  .main-box{
+    padding: 7px; /* taille des boites plus petite */
+    font-size: 0.8rem; /* taille du texte */
+  }
+
+  .social-username {
+    font-size: 0.7rem; /* taille du texte */
+  }
+
+  .contact-title-primary {
+    margin-bottom: 15px; /* espace sous le titre principal */
+  }
+
+  .title-row {
+    flex-direction: column; /* mail sous le title */
+  }
+
+  .contact-mail {
+    margin-top: 0px;  /* espace sous le mail */
+  }
+
+
+
+
+  .contact-inner {
+    padding: 15px;   /* marge sur les cotés */
+  }
+
+  .contact-col {
+    gap: 8px;  /* gap entre les boutons */
+  }
+
+  .contact-split { 
+    flex-direction: column-reverse;  /* on inverse l'ordre des sections */
+    gap: 10px; /* entre les sections */
+  } 
+
+  .contact-separator { 
+    width: 100%; 
+    height: 1px; 
+  } 
+
+  .vertical-resize {
+    resize:none;
+  }
+}

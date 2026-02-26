@@ -1,33 +1,61 @@
+/*-----------------------------------------------------------------------
+
+Composent mère de mon site
+Appels a tous mes composent principaux :
+  -image principale en fond
+  -barre de progression par dessus
+  -grille de navigation vers mes projets
+  -toutes mes sections de chacun de mes projets
+  -barre de navigation en haut a droite
+  -le panneau de contacts (qui s'affiche seulement si appeller)
+
+------------------------------------------------------------------------*/
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import EngineerProgressBar from './components/header_items/EngineerProgressBar';
+import NavigationGrid from './components/header_items/NavigationGrid';
+import NavBar from './components/header_items/NavBar'
+import ContactPanel from './components/panel/ContactPanel';
+import AllSections from './components/AllSections';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [language, setLanguage] = useState('en');
+
+  // fonction pour changer la langue
+  const toggleLanguage = (e) => {
+    e.preventDefault(); // empêche la page de remonter tout en haut
+    setLanguage(language === 'en' ? 'fr' : 'en');
+  };
+
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <>     
+      <div className="bg-container">
+        
+        {/* image de fond principale */}
+        <img
+          src={`backgrounds/bg_main_${language}.png`}
+          alt="main background"
+          className="main-bg" 
+          draggable="false"
+        />
+
+        {/* barre ingénieur */}
+        <EngineerProgressBar />
+
+        {/* grille de navigation */}
+        <NavigationGrid language={language} />
+
+        {/* toutes les sections */}
+        <AllSections language={language} />
+
+        {/* navbar */}
+        <NavBar language={language} toggleLanguage={toggleLanguage} />
+
+        {/* le panel de contact */}
+        <ContactPanel language={language} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

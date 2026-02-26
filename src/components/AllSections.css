@@ -1,0 +1,125 @@
+/* CSS de AllSections.jsx */
+
+/* --------------- MAIN WRAPPER --------------- */
+
+.all-sections-wrapper {
+  margin-top: 100vh; /* hauteur avant debut sections */
+}
+
+.section-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 20rem; /* marge entre deux projets */
+}
+
+
+
+/* --------------- FOND DE CHAQUE SECTION --------------- */
+
+.section-bg-container {
+  position: absolute;
+  pointer-events: none; /* pas d'intercation avec la souris */
+}
+
+.section-bg-img {
+  width: 100%; /* on prend toute la largeur */
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* --------------- TOUT CE QUI EST DANS CHAQUE SECTION --------------- */
+
+.section-items {
+  position: relative;
+}
+
+.divider-wrapper {
+  margin-bottom: 3rem; /* espace entre la barre de transition et section content */
+}
+
+
+.flip-x {
+  transform: scaleX(-1);
+}
+
+
+
+
+
+/* --------------- EXEPTION POUR ABOUT--------------- */
+/* on cache le fond de about sur pc - pas besoin */
+#about .section-bg-container {
+  display: none;
+}
+
+
+
+
+/* --------------- EXEPTION POUR BOTTOM PAGE--------------- */
+
+#bottom.section-wrapper {
+  padding-bottom: 3rem;  /* moins d'espace a la fin du site */
+}
+
+#bottom .left-column, 
+#bottom .right-column {
+  flex: 1; /* meme largeur pour tous le monde */
+}
+
+
+
+/* ---------------- LA BOÎTE DE COPYRIGHT (BOTTOM) ----------------- */
+.copyright-box {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.6;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+/* le style du lien GitHub à l'intérieur de la boîte */
+.copyright-box a {
+  color: var(--theme-2);
+  text-decoration: none;
+}
+
+/* quand on passe la souris sur le lien */
+.copyright-box a:hover {
+  color: var(--theme-1); 
+}
+
+
+
+
+
+/* --------------- MOBILE --------------- */
+@media (max-width: 768px) {
+  .all-sections-wrapper {
+    margin-top: 15vh;  /* hauteur avant debut sections */
+  }
+  
+  .section-bg-container {
+    height: 100%; /* on prend toute la longueur QUE SUR MOBILE ! */
+  }
+
+  .section-wrapper {
+    padding-bottom: 10rem; /* marge entre deux projets */
+  }
+
+  /* on affiche le fond de about sur mobile */
+  #about .section-bg-container {
+    display: block;
+  }
+
+  /* exeption au bottom */
+  #bottom .section-bg-container {
+    height: auto;
+  }
+
+
+}

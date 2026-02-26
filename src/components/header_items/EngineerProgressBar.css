@@ -1,0 +1,58 @@
+/* CSS de EngineerProgressBar.jsx */
+
+.progress-rectangle {
+  position: absolute;
+  background-color: var(--color-main-dark);
+
+  /* --- coo desktop /!\--- */
+  top: 38.3vw;      
+  left: 6.6vw;      
+  width: 40vw;
+  height: 2.5vw;
+  
+}
+
+.progress-fill {
+  height: 100%;  
+  transition: width 1s ease-out;  /* transition au chargement */
+  position: relative; /* pour avoir le pourcentage a l'intérieur */
+  background: linear-gradient(to right, 
+              var(--theme-1), 
+              var(--theme-2), 
+              var(--theme-3));
+}
+
+.progress-text {
+  position: absolute;
+  display: flex;
+  align-items: center; /* centrer verticalement */
+
+  left: 100%; 
+  top: 0;
+  height: 100%;
+  padding-left: 0.5vw;  /* espace avec progress fill */
+  
+  color: var(--theme-3);
+  font-weight: 600;
+  font-size: 1.3vw;
+  letter-spacing: 0.1vw;
+  white-space: nowrap;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+  
+  /* --- coo mobile /!\--- */
+  .progress-rectangle {
+    width: 75%;
+    top: 76vw; 
+    left: 13vw;
+    height: 6vw;
+  }
+  
+  /* taille du texte different */
+  .progress-text {
+  font-size: 3vw;
+  padding-left: 1vw; 
+  }
+}

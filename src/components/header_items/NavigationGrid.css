@@ -1,0 +1,243 @@
+/* CSS de NavigationGrid.jsx */
+
+/* le conteneur principal' */
+.nav-grid-wrapper {
+  position: absolute;
+}
+
+/* ---------- DESKTOP UNIQUEMENT ---------- */
+@media (min-width: 769px) {
+  .nav-grid-wrapper {
+    top: 26vh;
+    left: 46vw; 
+    right: 0;
+    display: flex;
+    justify-content: center;
+    bottom: auto;
+    transform: none;
+  }
+}
+
+/* ---------- MOBILE UNIQUEMENT ---------- */
+@media (max-width: 768px) {
+  .nav-grid-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: 42%;
+    transform: translateX(-50%);
+    margin-top: 100vw;
+    margin-bottom: 70% !important;
+    width: 60%;
+  }
+}
+
+
+/* la grille */
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5vw; /* espace entre les boutons */
+}
+
+/* ---------- BOUTON CARREE ----------*/
+.nav-square-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  aspect-ratio: 1 / 1; /* format carré */
+  width: 100px;
+  position: relative; /* pour positionner les labels par rapport au bouton */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* on cible chaque bouton pair pour les descendre */
+.nav-square-btn:nth-child(even) {
+  transform: translateY(3vw); /* descend la colonne de droite */
+}
+
+
+/* contour dégradé partagé (bouton & etiquette) */
+.btn-gradient-border {
+  width: 100%;
+  height: 100%;
+  padding: 4px; /* épaisseur du contour */
+  
+  background: linear-gradient(135deg, 
+              var(--theme-1), 
+              var(--theme-2), 
+              var(--theme-3));
+  
+  box-shadow: 0 4px 15px #12171b78;
+}
+
+/* contenu intérieur de base (fond noir) */
+.btn-content {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-main-dark); /* fond noir de base */
+  display: flex; /* centrage par défaut */
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* ----------ICON---------- */
+.nav-icon {
+  /* Préparation pour la transition vers l'image couleur */
+  background-image: var(--icon-url); 
+  background-size: 0%; /* invisible au départ */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background-color 0.3s ease;
+
+  /* CONFIGURATION DU MASQUE */
+  -webkit-mask-image: var(--icon-url), linear-gradient(#fff, #fff);
+  mask-image: var(--icon-url), linear-gradient(#fff, #fff);
+  
+  -webkit-mask-size: 60% 60%, cover;
+  mask-size: 60% 60%, cover;
+  
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  
+  -webkit-mask-position: center;
+  mask-position: center;
+  
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+
+
+/*---------- LABEL = ETIQUETTE ----------*/
+.label-container {
+  position: absolute;
+  top: 15%; /* centrage vertical (100-70)/2 */
+  height: 70%;
+  width: 175px;
+  text-overflow: clip;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: -1; /* derrière le bouton */
+}
+
+/* contenu du label */
+.label-content {
+  flex-direction: column; /* texte l'un sous l'autre */
+  padding: 5px 10px;
+}
+
+.label-text {
+  color: var(--theme-1);
+  text-align: left;
+  margin-bottom: 3px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.label-note {
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+/* ---------------------INTERACTIONS & ANIMATIONS------------------------------ */
+
+/* effet de grossissement du bouton */
+.nav-square-btn:hover {
+  transform: scale(1.2); 
+  z-index: 10;
+}
+
+.nav-square-btn:nth-child(even):hover {
+  transform: translateY(3vw) scale(1.1);
+}
+
+/* changement de l'icone au survol */
+.nav-square-btn:hover .nav-icon {
+  /* on désactive le masque */
+  -webkit-mask-image: none;
+  mask-image: none;
+  
+  background-size: 75%; /* l'image apparaît */
+  background-color: transparent; /* fond sombre */
+}
+
+
+/* affichage etiquette COLONNE GAUCHE (impairs) */
+.nav-square-btn:nth-child(odd) .label-container {
+  right: 0%;
+}
+.nav-square-btn:nth-child(odd):hover .label-container {
+  opacity: 1;
+  visibility: visible;
+  right: 80%; /* sort vers la gauche */
+}
+
+/* affichage etiquette COLONNE DROITE (pairs) */
+.nav-square-btn:nth-child(even) .label-container {
+  left: 0%;
+}
+.nav-square-btn:nth-child(even):hover .label-container {
+  opacity: 1;
+  visibility: visible;
+  left: 80%; /* sort vers la droite */
+}
+
+/* décalage du texte pour la colonne de droite */
+.nav-square-btn:nth-child(even) .label-text,
+.nav-square-btn:nth-child(even) .label-note {
+  margin-left: 25px; 
+}
+
+/* ---------------MOBILE ----------------------- */
+@media (max-width: 768px) {
+
+  .nav-grid-wrapper {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 70% !important;
+    left: 42%;
+    transform: translateX(-50%);
+    margin-top: 100vw;
+    width: 60%;
+  }
+
+  .nav-grid {
+    gap: 30vw; /* espace entre les boutons plus grande */
+  }
+
+  .nav-square-btn {
+    width: 130% !important; /* taille des boutons */
+  }
+
+  .nav-square-btn:nth-child(even) {
+    transform: translate(-40vw, 28vw) !important; /* deplace la colonne de droite */
+  }
+
+  /* décalage du texte etiquette pour les DEUX colonnes */
+  .nav-square-btn .label-text {
+    margin-left: 0px !important; 
+    margin-bottom: 1px;
+  }
+
+
+  /* RENDRE LES ÉTIQUETTES VISIBLES !!! */
+  .label-container {
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 49vw; 
+  }
+  
+  .nav-square-btn .label-container {
+    left: 95% /* sortie permanente */ !important;
+  }
+}

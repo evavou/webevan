@@ -1,0 +1,47 @@
+/* CSS de NavBar.jsx */
+
+.nav-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
+}
+
+/* les elements de la navbar */
+.nav-link,
+.nav-link:visited {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--theme-1); 
+}
+
+ /* hover navbar */
+.nav-link:hover {
+  font-weight: 500;
+  color: var(--theme-1);
+}
+
+/* pour eviter que la navbar bouge au hover*/
+.nav-link::after {
+  content: attr(data-text); /* récupère le mot */
+  font-weight: 500; /* le même poids qu'au survol ! */
+  height: 0; /* ne prend pas de place en hauteur */
+  visibility: hidden; /* invisible */
+}
+
+
+
+/* ---------------------MOBILE-------------------------*/
+@media (max-width: 768px) {
+  .nav-link {
+    font-size: 11px; 
+  }
+}
