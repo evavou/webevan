@@ -100,7 +100,7 @@
 /* --------------- MOBILE --------------- */
 @media (max-width: 768px) {
   .all-sections-wrapper {
-    margin-top: 15vh;  /* hauteur avant debut sections */
+    margin-top: 26vh;  /* hauteur avant debut sections */
   }
   
   .section-bg-container {

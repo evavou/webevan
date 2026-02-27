@@ -26,8 +26,6 @@
     right: auto;
     left: 42%;
     transform: translateX(-50%);
-    margin-top: 100vw;
-    margin-bottom: 70% !important;
     width: 60%;
   }
 }
@@ -204,11 +202,11 @@
     position: relative;
     top: auto;
     right: auto;
-    margin-bottom: 70% !important;
     left: 42%;
     transform: translateX(-50%);
     margin-top: 100vw;
     width: 60%;
+    margin-bottom: 70%!important; /* ajuste la distance entre la grid et la barre de transition */
   }
 
   .nav-grid {
@@ -217,16 +215,17 @@
 
   .nav-square-btn {
     width: 130% !important; /* taille des boutons */
+    z-index: 10;
   }
 
   .nav-square-btn:nth-child(even) {
-    transform: translate(-40vw, 28vw) !important; /* deplace la colonne de droite */
+    transform: translate(-40vw, 27.5vw) !important; /* deplace la colonne de droite */
   }
 
   /* décalage du texte etiquette pour les DEUX colonnes */
   .nav-square-btn .label-text {
     margin-left: 0px !important; 
-    margin-bottom: 1px;
+    margin-bottom: 0px;
   }
 
 
@@ -234,10 +233,12 @@
   .label-container {
     opacity: 1 !important;
     visibility: visible !important;
-    width: 49vw; 
+    width: 50vw; 
+    pointer-events: auto !important;
+    z-index: -1 !important;
   }
   
   .nav-square-btn .label-container {
-    left: 95% /* sortie permanente */ !important;
+    left: 93% /* sortie permanente */ !important;
   }
 }

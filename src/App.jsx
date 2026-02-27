@@ -12,7 +12,7 @@ Appels a tous mes composent principaux :
 ------------------------------------------------------------------------*/
 import { useState } from 'react'
 import './App.css';
-import EngineerProgressBar from './components/header_items/EngineerProgressBar';
+import BackgroundOverlay from './components/header_items/BackgroundOverlay';
 import NavigationGrid from './components/header_items/NavigationGrid';
 import NavBar from './components/header_items/NavBar'
 import ContactPanel from './components/panel/ContactPanel';
@@ -35,14 +35,14 @@ function App() {
         
         {/* image de fond principale */}
         <img
-          src={`backgrounds/bg_main_${language}.png`}
+          src={`/backgrounds/bg_main.webp`}
           alt="main background"
           className="main-bg" 
           draggable="false"
         />
 
         {/* barre ingénieur */}
-        <EngineerProgressBar />
+        <BackgroundOverlay language={language}/>
 
         {/* grille de navigation */}
         <NavigationGrid language={language} />

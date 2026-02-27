@@ -56,7 +56,7 @@ const NavigationGrid = ({language}) => {
              <div 
                 className="btn-content nav-icon"
                 style={{
-                  '--icon-url': `url(icons/icon_${item.id}.png)`
+                  '--icon-url': `url('/icons/icon_${item.id}.png')`
                 }}
               />
             </div>

@@ -31,7 +31,7 @@ const AllSections = ({ language }) => {
           {/* gestion du fond (flip-x une fois sur deux) */}
           <div className="section-bg-container">
             <img
-              src={`backgrounds/bg_${section.id}.webp`}
+              src={`/backgrounds/bg_${section.id}.webp`}
               alt={`background of section ${section.id}`}
               className={`section-bg-img no-select ${index % 2 !== 1 ? 'flip-x' : ''}`}
               draggable="false"
@@ -49,7 +49,7 @@ const AllSections = ({ language }) => {
               id={section.id}
               text={section.text}
               images={section.images.map(img => {
-                return { src: `pictures/${img.src}`, desc: img.desc };
+                return { src: `/pictures/${img.src}`, desc: img.desc };
               })}
               buttons={section.buttons}
             />

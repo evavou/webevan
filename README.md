@@ -54,6 +54,10 @@ Photoshop files to make new backgrounds and icons are available in :
 public/file/photoshop
 ```
 
+To transform backgounds.png into .webp files, use :
+```
+https://squoosh.app
+```
 
 ### Add a new project to the website
 
@@ -65,46 +69,51 @@ src/App.css
 ```
 
 2. Create a background image and save it as: 
-```text
+```
 public/backgrounds/bg_PROJECT_ID.webp
 ```
 
 3. Create an icon and save it as:
-```text
+```
 public/icons/icon_PROJECT_ID.png
 ```
 
 4. Add the project pictures to:
-```text
+```
 public/pictures/
 ```
 
 5. If necessary, add related files (like PDFs) to:
-```text
+```
 public/files/
 ```
 
 6. Add the new links (to files or websites) in:
-```javascript
+```
 src/data/data_links.jsx
 ```
 
 7. Update the `navItems` array in:
-```javascript
+```
 src/components/header_items/NavigationGrid.jsx
 ```
 
-8. Add the project content in:
-```javascript
+8. To adapt to the new navigation grid layout, you can change some parameters in :
+```
+AllSection.css and NavigationGrid.css
+```
+
+9. Add the project content in:
+```
 src/data/data_sections_en.jsx
 ```
 
-9. Add the translated French content in:
-```javascript
+10. Add the translated French content in:
+```
 src/data/data_sections_fr.jsx
 ```
 
-10. Change version in package.json before upload !
+11. Change version in package.json before upload !
 
 
 #
